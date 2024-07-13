@@ -15,16 +15,16 @@ static void event_handler(void* arg, esp_event_base_t event_base, int32_t event_
             wifi_event_callback(MIRU_WIFI_EVENT_STA_START, nullptr);
         }
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        ESP_LOGI(TAG,"Connect to the AP fail");
+        // ESP_LOGI(TAG,"Connect to the AP fail");
         esp_wifi_connect();
         s_retry_num++;
-        ESP_LOGI(TAG, "retry to connect to the AP...");
+        // ESP_LOGI(TAG, "retry to connect to the AP...");
         if(nullptr) {
             wifi_event_callback(MIRU_WIFI_EVENT_STA_STOP, nullptr);
         }
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
-        ESP_LOGI(TAG, "got ip:" IPSTR, IP2STR(&event->ip_info.ip));
+        // ESP_LOGI(TAG, "got ip:" IPSTR, IP2STR(&event->ip_info.ip));
         s_retry_num = 0;
 
         if(nullptr) {
